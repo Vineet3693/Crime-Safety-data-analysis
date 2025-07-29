@@ -1,13 +1,22 @@
 
-model = joblib.load('./model.pkl')  # Load the model from the src directory
-# app.py
+# src/app.py
 
 import streamlit as st
 import pandas as pd
 import joblib
+import os
 
-# Load the trained model
-model = joblib.load('model.pkl')  # Ensure you save the model after training
+# Check the current working directory
+print("Current Working Directory:", os.getcwd())
+
+# Define the path to the model
+model_path = 'src/model.pkl'  # Adjust this path based on your structure
+
+# Check if the model file exists
+if os.path.exists(model_path):
+    model = joblib.load(model_path)  # Load the model
+else:
+    st.error("Model file not found. Please ensure the model is trained and saved.")
 
 # Streamlit app title
 st.title('Crime Data Prediction App')
