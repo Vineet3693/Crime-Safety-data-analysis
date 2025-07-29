@@ -1,4 +1,5 @@
 
+model = joblib.load('./model.pkl')  # Load the model from the src directory
 # app.py
 
 import streamlit as st
